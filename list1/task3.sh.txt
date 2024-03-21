@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+
+
+function convert() {
+
+   newPath=converted-to-mp3/$(dirname "${1#*/}");
+
+   mkdir -p "$newPath";
+
+   fileName="$(basename "$1")";
+
+   newFileName="${fileName%.wav}.mp3";
+
+   ffmpeg -loglevel panic -i "$1" -acodec libmp3lame "$newPath"/"$newFileName";
+
+};
+
+
+
+export -f convert;
+
+
+
+find "$1" -type f -name "*.wav" -exec bash -c 'convert "$1"' _ {} \;

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+URL="https://ghtorrent.org/downloads.html";
+
+links=$(curl -sL "$URL" | grep -oP 'href="\K[^"]+' | grep -E '^https?://');
+
+
+
+errorN=0;
+
+for link in $links; do
+
+   response=$(curl -I -s -o /dev/null -w "%{http_code}" "$link");
+
+   echo ...;
+
+   if [ "$response" = "404" ] ; then
+
+      echo "ERROR 404 for the following adress: $link";
+
+      errorN=$((errorN+1));
+
+   fi;
+
+done;
+
+
+
+echo;
+
+echo "Check completed!";
+
+echo "$errorN errors found.";
+

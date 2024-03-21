@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+find "$1" -type f -name "*.txt" -exec bash -c 'cat "$1"; echo' _ {} \; |
+
+tr -c '[:alpha:]' ' ' | tr -s '[:space:]' '\n' | tr '[:lower:]' '[:upper:]' |
+
+sort | uniq -c | sort -nr | head -n 10;

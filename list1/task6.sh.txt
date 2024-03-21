@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DICT_URL="https://raw.githubusercontent.com/dwyl/english-words/master/words.txt";
+
+dict=$(curl -s "$DICT_URL" | tr '[:lower:]' '[:upper:]');
+
+text=$(cat "$1" | tr -d -c "[:alnum:][:space:]\n\'-" | tr '[:lower:]' '[:upper:]' | tr -s '[:space:]' '\n');
+
+
+
+for word in $text; do
+
+   result=$(echo "$dict" | grep -Fx $word);
+
+   if [[ -z $result ]]; then
+
+      echo "\"$word\" is not a word.";
+
+   fi;
+
+done;
