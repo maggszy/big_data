@@ -1,0 +1,23 @@
+{
+    "streaming": {
+        "interval": 5
+    },
+    "visualization": {
+        "name": "Bitcoin USD",
+        "smoothingPeriod": 30
+    },
+    "data": {
+        "ticker": "btc-usd",
+        "column": "close"
+    },
+    "socket": {
+        "producer": {
+            "host": "localhost",
+            "port": 9997
+        },
+        "dashboard": {
+            "host": "dashboard",
+            "port": 9998
+        }
+    }
+}
