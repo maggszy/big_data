@@ -1,8 +1,6 @@
 FROM python:3.9.0-alpine
 
-RUN apk update 
-# RUN apk add python3
-# RUN apk add cmake
+RUN apk update
 RUN apk add --update py-pip
 
 COPY ./requirements.txt /opt/app/requirements.txt

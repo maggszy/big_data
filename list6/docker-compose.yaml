@@ -8,10 +8,8 @@ services:
       - ./config.json:/home/config.json
     ports:
       - 4040:4040
-      # - 9998:9998
-      
     
-    entrypoint: /home/app/entrypoint.sh
+    entrypoint: ["sh", "/home/app/entrypoint.sh"]
 
   frontend:
     container_name: dashboard
@@ -23,4 +21,4 @@ services:
       - /var/container/some.sock:/var/run/some.sock
     ports:
       - 8050:8050
-    entrypoint: /home/app/entrypoint.sh
+    entrypoint: ["sh", "/home/app/entrypoint.sh"]

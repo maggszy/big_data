@@ -22,7 +22,11 @@ def _setup_producer(config: dict) -> None:
     streaming_server_producer = SocketStreamingServer(
         socket_config=config["socket"]["producer"]
     )
-    data_fetcher = YahooFinanceFetcher(ticker=config["data"]["ticker"])
+    data_fetcher = YahooFinanceFetcher(
+        ticker=config["data"]["ticker"],
+        time_span_h=config["data"]["timespanh"],
+        time_granularity=config["data"]["intervalsym"],
+    )
     producer = Producer(
         streaming_server=streaming_server_producer,
         data_fetcher=data_fetcher,

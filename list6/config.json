@@ -8,7 +8,9 @@
     },
     "data": {
         "ticker": "btc-usd",
-        "column": "close"
+        "column": "close",
+        "timespanh": 24,
+        "intervalsym": "1m"
     },
     "socket": {
         "producer": {
