@@ -1,0 +1,10 @@
+services:
+  spark-jupyter:
+    image: jupyter/pyspark-notebook
+    volumes:
+      - ./project:/home/jovyan/project
+    ports:
+      - "8888:8888"
+
+volumes:
+  myapp:
