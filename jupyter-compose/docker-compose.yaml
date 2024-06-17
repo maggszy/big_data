@@ -5,6 +5,3 @@ services:
       - ./project:/home/jovyan/project
     ports:
       - "8888:8888"
-
-volumes:
-  myapp:
