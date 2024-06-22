@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Recommendation System</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <h1>Pick Location and Time to Receive Music Recommendation</h1>
+    <div class="container">
+        <div class="column form-column">
+            <form method="post" id="locationForm">
+                <div class="datetime-input">
+                    <div class="input-icons">
+                        <i class="fas fa-calendar input--icon"></i>
+                        <input type="text" id="datepicker" name="date" class="form-control" autocomplete="off">
+                    </div>
+
+                    <div class="input-icons">
+                        <i class="fas fa-clock input--icon"></i>
+                        <input type="text" id="timepicker" name="time" class="form-control" autocomplete="off">
+                    </div>
+                </div>
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+            </form>
+        </div>
+        <div class="column">
+            <div id="map"></div>
+        </div>
+    </div>
+    <div class="submit-container">
+        <button type="submit" form="locationForm" class="btn btn-primary btn-large">Find Recommendation</button>
+    </div>
+    <div class="loader" id="loader"></div>
+    {% if song %}
+    <div class="result-container">
+        <i class="fas fa-music"></i>
+        <h2>Result</h2>
+        <p>
+            <span>{{ song }}</span>
+            {% if score %}
+                ({{ score }}%)
+            {% endif %}
+        </p>
+        
+    </div>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
