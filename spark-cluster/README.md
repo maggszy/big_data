@@ -23,5 +23,5 @@
     docker compose -f docker-compose-worker.yaml up
     ```
 
-10. When all the nodes are connected use `run-app.sh` script on the **master** machine to run your app
+10. When all the nodes are connected open a bash terminal and use `run-app.sh` script on the **master** machine to run your app
   
