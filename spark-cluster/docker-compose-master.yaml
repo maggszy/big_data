@@ -7,5 +7,6 @@ services:
     ports:
       - "7077:7077"
       - "8080:8080"
-    env-file: ".env"
+    environment:
+      - MASTER_IP=${MASTER_IP}
     entrypoint: ["sh", "/opt/app/entrypoints/master-entrypoint.sh"]
