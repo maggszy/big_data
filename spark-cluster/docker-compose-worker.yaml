@@ -2,4 +2,6 @@ services:
   spark-worker:
     container_name: spark-worker
     build: .
+    environment:
+      - MASTER-IP=${MASTER_IP}
     entrypoint: ["sh", "/opt/app/entrypoints/worker-entrypoint.sh"]
